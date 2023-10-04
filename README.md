@@ -11,33 +11,53 @@
 6. Display the employee table
 
 ### Program:
-```
-CREATE TABLE ep1(
-       empid NUMBER,
-       empname VARCHAR(10),
-       dept VARCHAR(10),
-       salary NUMBER
-       );
-       CREATE OR REPLACE PROCEDURE emp_data AS
-       BEGIN
-       INSERT INTO ep1(empid,empname,dept,salary)
-       values(1,'Swetha','MD',10000000);
-       INSERT INTO ep1(empid,empname,dept,salary)
-       values(2,'Anitha','HR',500000);
-       INSERT INTO ep1(empid,empname,dept,salary)
-       values(3,'Divya','IT',200000);
-       COMMIT;
-       FOR emp_rec IN (SELECT * FROM ep1)LOOP
-       DBMS_OUTPUT.PUT_LINE('EMPLOYEE ID:'||emp_rec.empid||',EMPLOYEE NAME:'|| emp_rec.empname||
-       ',DEPARTMENT:'||emp_rec.dept||',SALARY:'||emp_rec.salary);
-       END LOOP;
-       END;
-       /
+```sql
+
+create table vacancy (
+empid number,
+empname varchar (15),
+dept varchar(15),
+salary number
+);
+
+create or replace procedure insert_vacancy_data as
+
+begin
+
+insert into vacancy (empid, empname, dept, salary) values (001,'Lucas Warren', 'Architect', 640000);
+
+insert into vacancy (empid, empname, dept, salary) values (002,'Melaine Bailey', 'Interpreter', 180700);
+
+insert into vacancy (empid, empname, dept, salary) values (003,'Tyler Dalton', 'Geologist', 560100);
+
+insert into vacancy (empid, empname, dept, salary) values (004,'Ryan Gosling', 'Meteorologist', 165200);
+
+commit;
+
+
+for emp_rec IN (select * from vacancy) LOOP
+
+dbms_output.put_line('Employee ID: ' || emp_rec.empid || ',Employee Name: ' || emp_rec.empname || ',Department: ' || emp_rec.dept || ',Salary:' || emp_rec.salary);
+
+end loop;
+
+end;
+/
+
+
+ begin
+ insert_vacancy_data;
+ end;
+  /
+
+
+SQL> select *from vacancy;
 ```
 
 
 ### Output:
-![image](https://github.com/SudharsanamRK/Ex-No-4-Creating-Procedures-using-PL-SQL/assets/115523484/fb14dbb1-2a36-429e-97fa-b7285f26adaf)
+![dbms ex-04 output](https://github.com/SudharsanamRK/Ex-No-4-Creating-Procedures-using-PL-SQL/assets/115523484/fb150046-c9fd-42d8-9769-bb5982b5f0a7)
+
 
 ### Result:
-Thus,the output has been successfully verified!
+Thus To create a procedure using PL/SQL has been done successfully.
